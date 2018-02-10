@@ -12,7 +12,7 @@
 					<input type="checkbox" name="c{{i.name}}" ng-model="i.selected" value="{{i.id}}">{{i.name}}
 				</label>
 			</div>
-			
+		
 			<button ng-if="currentTier==3 && !pricesLoaded" ng-click="add_price()" class="btn-lg btn btn-primary">Add Prices</button>
 				
 				<div  ng-if="pricesLoaded">
