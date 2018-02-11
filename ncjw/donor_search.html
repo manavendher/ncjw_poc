@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="form-group">
+		<input type="text" class="form-control" id="search_key"
+			ng-model="search_key">
+	</div>
+	<div class="form-group">
+		<button ng-click="searchUser()" class="btn btn-default">Search</button>
+	</div>
+	<div class="form-group">
+		<button ng-if="!adding_user" ng-click="addUserClick()"
+			class="btn btn-default">Add New User</button>
+	</div>
+	<div class="row"  ng-repeat="i in searchResults">
+		<div class="btn-group">
+
+			<button class="btn-lg btn btn-default" ng-click="editUserClick(i)">{{i.name}}</button>
+			<button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+			  </button>
+			  
+			  <ul class="dropdown-menu" role="menu">
+<!-- 			    <li><a ng-click="genOwnReport(i)">OWN</a></li>
+ -->			    <li><a ng-click="gotoItemized(i)">ITEMIZE</a></li>
+			  </ul>
+			
+			
+			
+		</div>
+	</div>
+	
+	<div ng-if="adding_user">
+		<div class="form-group">
+			<label for="email">Name:</label> <input type="text"
+				class="form-control" id="name" placeholder="Enter name"
+				ng-model="userData.name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Phone:</label> <input type="text"
+				class="form-control" id="phone" placeholder="Enter Phone"
+				ng-model="userData.phone" name="phone">
+		</div>
+		<div class="form-group">
+			<label for="email">Email:</label> <input type="email"
+				class="form-control" id="email" placeholder="Enter email"
+				ng-model="userData.email" name="email">
+		</div>
+		<div class="form-group">
+			<label for="email">Address:</label>
+			<textarea class="form-control" rows="5" id="address"
+				ng-model="userData.address" name="address"></textarea>
+		</div>
+		<button ng-if="!userData.hasOwnProperty('id')" type="button" ng-click="addUser(1)" class="btn btn-default">Submit</button>
+		<button ng-if="userData.hasOwnProperty('id')" type="button" ng-click="addUser(1)" class="btn btn-default">Update</button>
+		<button type="button" ng-click="addUser(2)" class="btn btn-default">Itemize</button>
+		<button type="button" ng-click="addUser(3)" class="btn btn-default">Own</button>
+	</div>
